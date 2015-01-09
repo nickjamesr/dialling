@@ -1,0 +1,13 @@
+*.pdf
+
+figs
+figs/*
+
+poster
+poster/*
+
+data
+data/*
+
+reading
+reading/*

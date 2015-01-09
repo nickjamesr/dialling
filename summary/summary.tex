@@ -1,0 +1,60 @@
+\documentclass[a4paper]{article}
+
+\setlength{\parindent}{0mm}
+\setlength{\parskip}{2mm}
+
+\newcommand{\by}{\times}
+\newcommand{\of}[1]{\left(#1\right)}
+\newcommand{\bigo}[1]{O\of{#1}}
+
+\usepackage{geometry}
+\title{Direct Dialling}
+\author{Nick Russell}
+
+\begin{document}
+\maketitle
+This project concerns how to dial a Haar unitary random matrix in a Reck scheme
+without having to first generate the unitary explicitly (e.g.\ by Gramm-Schmidt)
+and then convert to Reck scheme parameters. Instead, the \( N^{2} \) parameters
+required are chosen from appropriate distributions such that the effect of the
+Reck scheme is a Haar unitary random matrix. I have found the forms of these
+distributions and proved via a coordinate transformation that the do in fact
+result in a random unitary, as required. Moreover, the time taken to generate
+the Reck scheme parameters is \(\bigo{N^{2}}\), while the Gramm-Schmidt process
+takes \(\bigo{N^{3}}\). My scheme is thus a more efficient way of generating the
+Reck scheme, but note that it still takes \(\bigo{N^{3}}\) time to generate the
+explicit form of the unitary matrix.
+
+Unfortunately, work very similar to this (though in more abstract terms) has
+already been published by Spengler et al. I must finish writing up my version,
+then decide if there is sufficient original content to attempt to publish it.
+
+The c
+
+I have also done some preliminary numerical work on a different decomposition
+using binary branching, rather than the `cascade' form of the Reck scheme. This
+results in different probability distributions, which are all centered on 0.5,
+and approximate Gaussians near to the root of the (binary) tree. The
+approximation to a Gaussian is very good. This may prove more useful for
+fabrication of \(d\)-way splitters, because it eliminates the need for
+beamsplitters of very low reflectivity. However, to realise a full unitary in
+this way requires many crossings of waveguides, which is hard to fabricate
+(though a 3D approach could eliminate some of these problems). Finally, path
+length matching will require some careful consideration.
+
+Another use for the Reck decomposition is for generating truncations of
+Haar unitaries directly, without having to generate the entire unitary matrix.
+Say I want a \(p \by p\) matrix that is the truncation of an \(m \by m\) Haar
+unitary, and \(m = \bigo{p^{2}}\), I would traditionally have to generate an \(m
+\by m\) unitary, then take (say) the top left corner. I could reduce the work
+somewhat by just generating the first \(p\) columns, but I am still throwing
+away a lot of the matrix. Using the Reck scheme I can use a `diamond' shape of
+beamsplitters, chosen from the top \(2p\) modes of the whole scheme, and
+generate the unitary corresponding to this. The bottom \(p\) modes are just
+loss, but the top left \(p \by p\) matrix corresponds to a truncation of an \(m
+\by m\) Haar unitary.
+
+
+
+\end{document}
+

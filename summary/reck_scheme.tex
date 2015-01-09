@@ -1,0 +1,62 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{amsmath}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4mm}
+
+\newcommand{\mat}[1]{\mathrm{#1}}
+
+\begin{document}
+A 4 \(\times\) 4 Reck scheme:
+
+\begin{figure}[h]
+  \setlength{\unitlength}{1cm}
+  \begin{picture}(14,5)
+    \put(1,1){\includegraphics[width=12cm]{reck_4x4}}
+    % Labels for the subunitaries
+    \put(1.0,4.5){\( \mat{U}_{3} \)}
+    \put(2.5,4.5){\( \mat{U}_{2} \)}
+    \put(5.3,4.5){\( \mat{U}_{1} \)}
+    \put(10,4.5){\( \mat{U}_{0} \)}
+    % Labels for the phase shifts
+    \put(12.2, 2.5){\( \phi_{01} \)}
+    \put(10.4, 3.4){\( \phi_{02} \)}
+    \put(8.6, 4.3){\( \phi_{03} \)}
+    \put(6.6, 2.5){\( \phi_{12} \)}
+    \put(5.0, 3.4){\( \phi_{13} \)}
+    \put(3.1, 2.5){\( \phi_{23} \)}
+    % Labels for the reflectivities
+    \put(11.5, 0.8){\( r_{01} \)}
+    \put(9.7, 1.7){\( r_{02} \)}
+    \put(8.0, 2.6){\( r_{03} \)}
+    \put(6.1, 0.8){\( r_{12} \)}
+    \put(4.4, 1.7){\( r_{13} \)}
+    \put(2.5, 0.8){\( r_{23} \)}
+    % Labels for the input phases
+    \put(1.0, 3.5){\( \alpha_{0} \)}
+    \put(1.0, 2.6){\( \alpha_{1} \)}
+    \put(1.0, 1.7){\( \alpha_{2} \)}
+    \put(1.0, 0.8){\( \alpha_{3} \)}
+  \end{picture}
+\end{figure}
+The programme converts a unitary into a representation as a Reck scheme. This is
+stored as a matrix of parameters:
+\begin{equation*}
+  U \rightarrow \begin{pmatrix}
+    R_{00} & R_{01} & R_{02} & R_{03} \\
+    R_{10} & R_{11} & R_{12} & R_{13} \\
+    R_{20} & R_{21} & R_{22} & R_{23} \\
+    R_{30} & R_{31} & R_{32} & R_{33} \end{pmatrix}
+\end{equation*}
+The upper triangle contains the reflectivities, the lower triangle the phase
+shifts, except for the input phases, which are on the diagonal, i.e.
+\begin{align*}
+  r_{ij} &= R_{ij} \\
+  \phi_{ij} &= R_{ji} \\
+  \alpha_{i} &= R_{ii}
+\end{align*}
+
+\end{document}
