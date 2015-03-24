@@ -1,13 +1,17 @@
-default : dialling.tex
-	latex dialling
+figures=$(addprefix figures/, cascade.pdf components.pdf example.pdf graphs.pdf\
+ matrix.pdf reck_nxn.pdf unitary.pdf graphs.pdf)
+
+dialling.pdf : dialling.tex bib/dialling.bib $(figures)
+	pdflatex dialling
 	bibtex dialling
-	latex dialling
-	latex dialling
-	latex dialling
-	dvips dialling.dvi
-	ps2pdf dialling.ps
-	@rm dialling.aux dialling.bbl dialling.blg dialling.dvi dialling.end
-	@rm dialling.log dialling.ps
+	pdflatex dialling
+	pdflatex dialling
+
+figures/%.pdf : figures/%.svg figures/%.pyx
+	cd figures && $(MAKE) $*.pdf
+
+figures/%.pdf : figures/%.pyx
+	cd figures && $(MAKE) $*.pdf
 
 clean :
 	@if [ -e dialling.pdf ]; then rm dialling.pdf; fi

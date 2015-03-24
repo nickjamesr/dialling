@@ -1,7 +1,10 @@
-*.pdf
+dialling.aux
+dialling.bbl
+dialling.blg
+dialling.end
+dialling.log
+dialling.pdf
 
-figs
-figs/*
 
 poster
 poster/*
