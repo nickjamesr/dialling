@@ -13,7 +13,7 @@
    height="171.40199"
    id="svg2"
    version="1.1"
-   inkscape:version="0.48.4 r9939"
+   inkscape:version="0.91 r13725"
    sodipodi:docname="example.svg">
   <defs
      id="defs4">
@@ -54,8 +54,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="2.7192308"
-     inkscape:cx="133.1618"
-     inkscape:cy="109.1873"
+     inkscape:cx="265.91993"
+     inkscape:cy="82.709224"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -338,42 +338,6 @@
        width="400"
        id="rect3812"
        style="fill:#00ff00;fill-opacity:0.11926605;stroke:none" />
-    <text
-       xml:space="preserve"
-       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="260"
-       y="871.98059"
-       id="text3871"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan3873"
-         x="260"
-         y="871.98059"
-         style="font-size:11px">(c)</tspan></text>
-    <text
-       sodipodi:linespacing="125%"
-       id="text3875"
-       y="912.80096"
-       x="339.80197"
-       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       xml:space="preserve"><tspan
-         style="font-size:11px"
-         y="912.80096"
-         x="339.80197"
-         id="tspan3877"
-         sodipodi:role="line">(b)</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="419.97171"
-       y="953.62134"
-       id="text3879"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan3881"
-         x="419.97171"
-         y="953.62134"
-         style="font-size:11px">(a)</tspan></text>
     <path
        sodipodi:nodetypes="cccc"
        inkscape:connector-curvature="0"

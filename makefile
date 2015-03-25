@@ -1,9 +1,10 @@
-figures=$(addprefix figures/, cascade.pdf components.pdf example.pdf graphs.pdf\
+figures=$(addprefix figures/, cascade.pdf example.pdf graphs.pdf\
  matrix.pdf reck_nxn.pdf unitary.pdf graphs.pdf)
 
 dialling.pdf : dialling.tex bib/dialling.bib $(figures)
 	pdflatex dialling
 	bibtex dialling
+	pdflatex dialling
 	pdflatex dialling
 	pdflatex dialling
 
@@ -16,6 +17,7 @@ figures/%.pdf : figures/%.pyx
 clean :
 	@if [ -e dialling.pdf ]; then rm dialling.pdf; fi
 	cd summary && $(MAKE) clean
+	cd figures && $(MAKE) clean
 
 summary : summary.pdf
 

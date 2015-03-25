@@ -81,9 +81,23 @@ linear optics is not widely appreciated. In a manner analagous to Reck's
 physically-motivated presentation of Hurwitz's decomposition of unitaries, we
 hope to draw attention to the results by putting them in terms of linear-optical
 components.
-\input{figures/unitary}
 
-%Anthony up to here
+\begin{figure}[h]
+  \centering
+  \includegraphics{figures/unitary}
+  \caption{Linear-optical implementation of a unitary matrix.\\
+    (a) and (b) are
+    respectively a beamsplitter and phase shifter, and the matrix representation
+    is indicated below. These components are the building
+    block of the universal linear-optical circuit shown in (c). \\
+    (c) shows a universal linear-optical circuit on four modes. If the
+    parameters \(r_{ij}\)
+    can be tuned between \(0\) and \(1\), and \(\phi_{i,j}\) and \(\alpha_i\)
+    between \(0\) and \(2\pi\) then this configuration can realise any unitary
+    operator on the input modes}
+  \label{fig:unitary}
+\end{figure}
+
 Drawing a Haar random unitary is analogous to choosing a random number from a
 uniform distribution in that it should be unbiased. The probability of drawing
 a particular unitary matrix from some region in the space of unitaries should
@@ -147,7 +161,31 @@ linear optics, the choice and implementation of the matrices \(\mat{R}_i\)
 becomes straightforward \cite{re-prl-73-58} and therefore the problem of
 choosing a Haar unitary is reduced to the problem of choosing random unit
 vectors, to which we will now direct our attention.
-\input{figures/reck_nxn}
+
+\begin{figure}[t]
+  \centering
+  \subfloat[A schematic of the implementation of an \(n \by n\) unitary]{
+    \includegraphics{figures/reck_nxn}
+    \label{fig:recknxn}
+  } \\
+  \subfloat[The relationship between the \( \vec{x} \) and \( \vec{r} \)
+    bases; linear-optical circuit corresponding to the block \(R_{n}\).]{
+    \includegraphics{figures/cascade}
+    \label{fig:cascade}
+  }
+  \caption{In~\ref{fig:cascade},
+    \(r_{0}\) corresponds to the power of the input light and \(x_{i}\) is the
+    power output in mode \(i\). The other \(r\)s correspond to the
+    reflectivities of beamsplitters in the circuit. The triangles are phase
+    shifts, and may be chosen uniformly from the interval \( \left[ 0, 2\pi
+    \right)\), since the phases do not appear in the pdf in either the \(
+    \vec{x} \) or the \( \vec{r} \) basis. The unitary describing this set of
+    optical components is the matrix \( \mat{R}_{n} \).
+    Each of the labelled blocks in~\ref{fig:recknxn} are cascaded beamsplitters
+    as illustrated in~\ref{fig:cascade}, and implement the rotation matrices,
+    \(\mat{R}_{i}\).}
+  \label{fig:reck}
+\end{figure}
 
 Consider the complex Gaussian vector in \(n\) dimensions:
 \begin{equation}
@@ -218,7 +256,13 @@ the bottom row of the matrix (i.e. \(i=n-1\)) we have:
   0 & & j &> i+1 & (f)
 \end{align*}
 Letters correspond to the labels in figure~\ref{fig:matrix}.
-\input{figures/matrix}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics{figures/matrix}
+  \caption{The structure of the Jacobian matrix}
+  \label{fig:matrix}
+\end{figure}
 
 This is a lower Hessenberg matrix which we now normalise---that is, perform
 columnwise multiplications to make all elements on the first super-diagonal
@@ -308,8 +352,23 @@ beamplitters are chosen according to:
   r_{i,j} \sim \left( i-j \right) \left( 1-r_{i,j} \right)^{i-j-1}
 \end{equation}
 A \( 4 \by 4 \) example is illustrated in figure~\ref{fig:example}.
-\input{figures/example}
 
+\begin{figure}[h]
+  \centering
+  \includegraphics{figures/example}\\
+  \vspace{5mm}
+  \includegraphics[width=\columnwidth]{figures/graphs}
+  \caption{A \(4 \by 4\) unitary, expressed in linear optics according to the
+    scheme in \cite{re-prl-73-58}, and the appropriate \pdf s for choosing
+    parameters for a Haar unitary. The reflectivities of the bottom three
+    beamsplitters (region (a), shaded green) can be chosen uniformly from the
+    interval \(\left[ 0,1 \right)\); those on the second row (region (b),
+    shaded red) are chosen from a linear distribution biased towards lower
+    reflectivities; and the top one is chosen from a quadratic distribution,
+    even more biased towards lower reflectivities.}
+  \label{fig:example}
+\end{figure}
+  
 We have shown how to express the probability density function for Haar random
 unitary matrices in terms of physically motivated parameters. The expression is
 compact and non-redundant, whereas the equivalent in the Cartesian basis would
