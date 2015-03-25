@@ -13,7 +13,7 @@
    height="216.61803"
    id="svg2"
    version="1.1"
-   inkscape:version="0.91 r13725"
+   inkscape:version="0.48.5 r10040"
    sodipodi:docname="example.svg">
   <defs
      id="defs4">
@@ -87,10 +87,10 @@
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1920"
-     inkscape:window-height="1134"
+     inkscape:window-width="1440"
+     inkscape:window-height="851"
      inkscape:window-x="0"
-     inkscape:window-y="27"
+     inkscape:window-y="0"
      inkscape:window-maximized="1"
      showguides="true"
      inkscape:guide-bbox="true"
@@ -106,7 +106,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -115,6 +115,41 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(140,-839.14616)">
+    <rect
+       style="fill:#ff0000;fill-opacity:0.19607843;stroke-width:1.00000012;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:2.00000024, 2.00000023999999987;stroke-dashoffset:1.79999995"
+       id="rect3688"
+       width="80"
+       height="38.521549"
+       x="180"
+       y="851.24261" />
+    <rect
+       style="fill:#00ff00;fill-opacity:0.19607843;stroke-width:1.00000012;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:2.00000024, 2.00000023999999987;stroke-dashoffset:1.79999995"
+       id="rect4514"
+       width="240"
+       height="40"
+       x="100"
+       y="889.76416" />
+    <rect
+       style="fill:#0000ff;fill-opacity:0.19607843;stroke-width:1.00000012;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:2.00000024, 2.00000023999999987;stroke-dashoffset:1.79999995"
+       id="rect4516"
+       width="400"
+       height="40"
+       x="20"
+       y="929.76416" />
+    <rect
+       style="fill:#00ffff;fill-opacity:0.19607843;stroke-width:1.00000012;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:2.00000024, 2.00000023999999987;stroke-dashoffset:1.79999995"
+       id="rect4520"
+       width="720"
+       height="40"
+       x="-140"
+       y="1009.7642" />
+    <rect
+       style="fill:#ffff00;fill-opacity:0.19607843;stroke-width:1.00000012;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:2.00000024, 2.00000024;stroke-dashoffset:1.79999995"
+       id="rect4518"
+       width="560"
+       height="40"
+       x="-60"
+       y="969.76416" />
     <g
        id="g3006"
        transform="translate(150.5,23.901993)">
@@ -753,41 +788,6 @@
        id="path3686"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cccc" />
-    <rect
-       style="fill:#ff0000;fill-opacity:0.19607843;stroke-width:1.00000012;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:2.00000024, 2.00000023999999987;stroke-dashoffset:1.79999995"
-       id="rect3688"
-       width="80"
-       height="38.521549"
-       x="180"
-       y="851.24261" />
-    <rect
-       style="fill:#00ff00;fill-opacity:0.19607843;stroke-width:1.00000012;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:2.00000024, 2.00000023999999987;stroke-dashoffset:1.79999995"
-       id="rect4514"
-       width="240"
-       height="40"
-       x="100"
-       y="889.76416" />
-    <rect
-       style="fill:#0000ff;fill-opacity:0.19607843;stroke-width:1.00000012;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:2.00000024, 2.00000023999999987;stroke-dashoffset:1.79999995"
-       id="rect4516"
-       width="400"
-       height="40"
-       x="20"
-       y="929.76416" />
-    <rect
-       style="fill:#ffff00;fill-opacity:0.19607843;stroke-width:1.00000012;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:2.00000024, 2.00000024;stroke-dashoffset:1.79999995"
-       id="rect4518"
-       width="560"
-       height="40"
-       x="-60"
-       y="969.76416" />
-    <rect
-       style="fill:#00ffff;fill-opacity:0.19607843;stroke-width:1.00000012;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:2.00000024, 2.00000023999999987;stroke-dashoffset:1.79999995"
-       id="rect4520"
-       width="720"
-       height="40"
-       x="-140"
-       y="1009.7642" />
     <path
        sodipodi:nodetypes="cccc"
        inkscape:connector-curvature="0"

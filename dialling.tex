@@ -41,7 +41,6 @@ unitaries.
 
 \maketitle
 
-\section{revised}
 The development of the \bosonsampling{} problem \cite{aa-conf-11-333} has
 motivated fresh interest in studying \emph{random} unitaries that describe the
 optical circuits acting on multiphoton states. Rapid developments in the field
@@ -51,9 +50,6 @@ operator. Combined with on-chip sources \cite{si-nphoton-8-104}
 and detectors \cite{re-srep-3, pe-ncomm-3-1325}, the scale of experimental
 implementations of \bosonsampling{} \cite{cr-nat-7-545, br-sci-339-794,
 sp-sci-339-798, ti-nphoton-7-540} is likely to increase.
-% ^^
-% I'd like to add to this my sentence about not being interested in the exact
-% form of the unitary; rather just the distribution
 
 \begin{figure}[t]
   \centering
@@ -192,8 +188,6 @@ Jacobian. On the bottom row of the matrix (i.e. \(i=n-1\)) we have:
   0 & & j &> i+1
 \end{align*}
 
-\section{todo}
-
 This is a lower Hessenberg matrix which we now normalise---that is, perform
 columnwise multiplications to make all elements on the first super-diagonal
 equal 1;
@@ -275,42 +269,56 @@ don't ever need to know the explicit form of the matrix. We can instead just
 manufacture a network of beamsplitters and phase shifters, with reflectivities
 and phase shifts chosen from the correct distributions. All the phase shifts can
 be chosen from the uniform distribution on \( \left[ 0,\pi \right) \) (since the
-expression for the \pdf{} has no dependence on any of the \(\phi\) or \(\alpha\)
-parameters in fig~\ref{fig:unitary}) and the
-beamplitters are chosen according to:
+expression for the \pdf{} has no explicit dependence on these parameters) and
+the beamplitters are chosen according to:
 \begin{equation}
   r_{i,j} \sim \left( i-j \right) \left( 1-r_{i,j} \right)^{i-j-1}
 \end{equation}
-A \( 6 \by 6 \) example is illustrated in figure~\ref{fig:example}.
+
+We note that devices fabricated in integrated optics often use a Mach Zehnder
+inteferometer (MZI) to realise a variable reflectivity beamsplitter. In this
+case, the most relevant parameter is no longer the reflectivity, but the
+internal phase shift, \(\theta\), in the MZI. A further change of variables
+gives us the equivalent distributions for these phases as
+\begin{equation}
+  \theta_{i,j} \sim \sin \of{\frac{\theta_{i,j}}{2}}
+  \cos \of{\frac{\theta_{i,j}}{2}}^{2 \left(i-j\right)-1} 
+\end{equation}
+(using the same numbering system as before).
+A \( 6 \by 6 \) example in terms of both beamsplitter reflectivities and MZI
+phase shifts is illustrated in figure~\ref{fig:example}.
 
 \begin{figure*}[h]
   \includegraphics{figures/example}
-  \caption{A \(6 \by 6\) unitary, expressed in linear optics according to the
-    scheme in \cite{re-prl-73-58}, and the appropriate \pdf{}s for choosing
-    parameters for a Haar unitary. The reflectivities of the bottom three
-    beamsplitters (shaded cyan) can be chosen uniformly from the
-    interval \(\left[ 0,1 \right)\), while those on higher rows are chosen from
-    according to polynomials increasingly biased towards lower reflectivities.}
+  \caption{(a) A \(6 \by 6\) unitary, expressed in linear optics using a scheme
+    similar to the one in \cite{re-prl-73-58}. (b) The appropriate \pdf{}s for
+    choosing beamsplitter reflectivities to achieve Haar random unitaries, with
+    colours corresponding to (a). The reflectivities of beamsplitters on the
+    bottom row can be chosen uniformly from the interval \(\left[ 0,1 \right)\),
+    while those on higher rows are chosen from according to polynomials
+    increasingly biased towards lower reflectivities. (c) Equivalent
+    distributions for an implementation of variable reflectivity beamsplitters
+    using an internal phase shift in a Mach Zehnder interferometer (MZI). This
+    is relevant to realisations in integrated optics. Colours again correspond
+    to the rows in (a) and the line colours in (b).}
   \label{fig:example}
 \end{figure*}
 
-\section{qubits}
+We now extend the result to the case of a unitary operating on qubits by
+demonstrating a mapping between a unitary on \(m=2^{n}\) optical modes and an
+operation on \(n\) qubits. This mapping is not efficient, since the number of
+modes required grows exponentially with the number of qubits.
   
-\section{conlusion}
 We have shown how to express the probability density function for Haar random
 unitary matrices in terms of physically motivated parameters. The expression is
-compact and non-redundant, whereas the equivalent in the Cartesian basis would
-be a lot more complicated. While the mathematics of this process has been known
-for a long time, the link to linear-optical components has not previously been
+compact and non-redundant, whereas the equivalent in the Cartesian basis is a
+lot more complicated. While the mathematics of this process has been known
+for some time, the link to linear-optical components has not previously been
 made clear, and the proof presented here in terms of a change of basis is much
-simpler than that in \cite{sp-jpa-43-385306}. Our formula will have
-applications in the emerging field of Boson Sampling, where photons are
-injected into large Haar unitaries to demonstrate the power of quantum systems
-over classical. Using the results contained here, the unitaries can be
-generated directly in terms of the linear optical components without having to
-go through the process of orthogonalising a Gaussian matrix.
-
-
+simpler than that in \cite{sp-jpa-43-385306}. The formula in its general form
+is applicable to \bosonsampling{}, where Haar unitaries are required, and is
+extensible to systems of qubits so may find additional applications outside of
+linear optics.
 
 \bibliography{bib/dialling}
 
