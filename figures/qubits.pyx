@@ -31,6 +31,56 @@ set multiplot
   text "(c)" at 48*fig_m,38*fig_m
   text "(d)" at 83*fig_m,38*fig_m
 
+  # Gate labels
+  text "\small \(\phi\)" at 6.5*fig_m,2.8*fig_m
+  text "\small \(\overline{\phi}\)" at 9.6*fig_m,2.8*fig_m
+  text "\small \(\phi\)" at 13.0*fig_m,2.8*fig_m
+  text "\small \(\overline{\phi}\)" at 16.2*fig_m,2.8*fig_m
+  text "\small \(\phi\)" at 19.5*fig_m,2.8*fig_m
+  text "\small \(\overline{\phi}\)" at 22.8*fig_m,2.8*fig_m
+  text "\small \(\phi\)" at 26.0*fig_m,2.8*fig_m
+  text "\small \(\overline{\phi}\)" at 29.4*fig_m,2.8*fig_m
+
+  text "\small H" at 36.7*fig_m,2.8*fig_m
+  text "\small \(\phi\)" at 41.7*fig_m,2.8*fig_m
+  text "\small \(\phi\)" at 46.6*fig_m,2.8*fig_m
+  text "\small \(\phi\)" at 51.5*fig_m,2.8*fig_m
+  text "\small \(\phi\)" at 56.4*fig_m,2.8*fig_m
+  text "\small H" at 61.3*fig_m,2.8*fig_m
+
+  text "\small H" at 75.2*fig_m,2.8*fig_m
+  text "\small \(\phi\)" at 79.3*fig_m,2.8*fig_m
+  text "\small \(\phi\)" at 83.4*fig_m,2.8*fig_m
+  text "\small \(\phi\)" at 87.5*fig_m,2.8*fig_m
+  text "\small H" at 91.6*fig_m,2.8*fig_m
+
+  text "\small \(\phi\)" at 6.5*fig_m,offset+2.7*fig_m
+  text "\small \(\overline{\phi}\)" at 9.6*fig_m,offset+2.7*fig_m
+  text "\small \(\phi\)" at 12.7*fig_m,offset+2.7*fig_m
+  text "\small \(\overline{\phi}\)" at 15.7*fig_m,offset+2.7*fig_m
+  text "\small H" at 19.5*fig_m,offset+2.7*fig_m
+  text "\small \(\phi\)" at 22.6*fig_m,offset+2.7*fig_m
+  text "\small H" at 25.6*fig_m,offset+2.7*fig_m
+  text "\small \(\overline{\phi}\)" at 29.4*fig_m,offset+2.7*fig_m
+  text "\small H" at 34.7*fig_m,offset+2.7*fig_m
+  text "\small \(\phi\)" at 37.8*fig_m,offset+2.7*fig_m
+  text "\small H" at 41.0*fig_m,offset+2.7*fig_m
+  text "\small \(\phi\)" at 46.3*fig_m,offset+2.7*fig_m
+  text "\small H" at 50.1*fig_m,offset+2.7*fig_m
+  text "\small \(\phi\)" at 53.2*fig_m,offset+2.7*fig_m
+  text "\small \(\phi\)" at 56.4*fig_m,offset+2.7*fig_m
+  text "\small H" at 59.5*fig_m,offset+2.7*fig_m
+  text "\small \(\overline{\phi}\)" at 63.3*fig_m,offset+2.7*fig_m
+  text "\small \(\overline{\phi}\)" at 66.4*fig_m,offset+2.7*fig_m
+  text "\small H" at 71.7*fig_m,offset+2.7*fig_m
+  text "\small \(\phi\)" at 74.8*fig_m,offset+2.7*fig_m
+  text "\small H" at 77.9*fig_m,offset+2.7*fig_m
+  text "\small \(\phi\)" at 83.4*fig_m,offset+2.7*fig_m
+  text "\small H" at 87.2*fig_m,offset+2.7*fig_m
+  text "\small \(\phi\)" at 90.3*fig_m,offset+2.7*fig_m
+  text "\small H" at 93.4*fig_m,offset+2.7*fig_m
+  text "\small \(\overline{\phi}\)" at 97.2*fig_m,offset+2.7*fig_m
+
   set display
   refresh
 unset multiplot
