@@ -4,7 +4,7 @@ else
 inkscape=inkscape
 endif
 
-default : cascade.pdf example.pdf graphs.pdf matrix.pdf recursive.pdf\
+default : cascade.pdf example.pdf matrix.pdf qubits.pdf recursive.pdf\
  unitary.pdf
 
 cascade.pdf : cascade.eps cascade.pyx
@@ -21,6 +21,9 @@ matrix.pdf : matrix.eps matrix.pyx
 
 recursive.pdf : recursive.eps recursive.pyx
 	pyxplot recursive.pyx
+
+qubits.pdf : twoqubit.eps threequbit.eps qubits.pyx
+	pyxplot qubits.pyx
 
 unitary.pdf : unitary.eps components.eps unitary.pyx
 	pyxplot unitary.pyx

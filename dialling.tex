@@ -1,4 +1,4 @@
-\documentclass[aps,prl,twocolumn]{revtex4}
+\documentclass[aps,prl,twocolumn,floatfix]{revtex4}
 
 \usepackage{amsmath}
 \usepackage{amsfonts}
@@ -41,16 +41,6 @@ unitaries.
 
 \maketitle
 
-The development of the \bosonsampling{} problem \cite{aa-conf-11-333} has
-motivated fresh interest in studying \emph{random} unitaries that describe the
-optical circuits acting on multiphoton states. Rapid developments in the field
-of integrated optics with reconfigurable components facilitates the construction
-of large-scale optical circuits capable of actively realising any unitary
-operator. Combined with on-chip sources \cite{si-nphoton-8-104}
-and detectors \cite{re-srep-3, pe-ncomm-3-1325}, the scale of experimental
-implementations of \bosonsampling{} \cite{cr-nat-7-545, br-sci-339-794,
-sp-sci-339-798, ti-nphoton-7-540} is likely to increase.
-
 \begin{figure}[t]
   \centering
   \subfloat[]{
@@ -70,6 +60,32 @@ sp-sci-339-798, ti-nphoton-7-540} is likely to increase.
     \(\vec{r}\) is illustrated by the labels on \ref{fig:cascade}.}
   \label{fig:reck}
 \end{figure}
+
+\begin{figure*}[t]
+  \includegraphics{figures/example}
+  \caption{(a) A \(6 \by 6\) unitary, expressed in linear optics using a scheme
+    similar to the one in \cite{re-prl-73-58}. (b) The appropriate \pdf{}s for
+    choosing beamsplitter reflectivities to achieve Haar random unitaries, with
+    colours corresponding to (a). The reflectivities of beamsplitters on the
+    bottom row can be chosen uniformly from the interval \(\left[ 0,1 \right)\),
+    while those on higher rows are chosen from according to polynomials
+    increasingly biased towards lower reflectivities. (c) Equivalent
+    distributions for an implementation of variable reflectivity beamsplitters
+    using an internal phase shift in a Mach Zehnder interferometer (MZI). This
+    is relevant to realisations in integrated optics. Colours again correspond
+    to the rows in (a) and the line colours in (b).}
+  \label{fig:example}
+\end{figure*}
+
+The development of the \bosonsampling{} problem \cite{aa-conf-11-333} has
+motivated fresh interest in studying \emph{random} unitaries that describe the
+optical circuits acting on multiphoton states. Rapid developments in the field
+of integrated optics with reconfigurable components facilitates the construction
+of large-scale optical circuits capable of actively realising any unitary
+operator. Combined with on-chip sources \cite{si-nphoton-8-104}
+and detectors \cite{re-srep-3, pe-ncomm-3-1325}, the scale of experimental
+implementations of \bosonsampling{} \cite{cr-nat-7-545, br-sci-339-794,
+sp-sci-339-798, ti-nphoton-7-540} is likely to increase.
 
 In linear optics, any unitary operator can be implemented as an array of
 beamsplitters and phase shifters as shown in figure~\ref{fig:reck}. A similar
@@ -288,27 +304,19 @@ gives us the equivalent distributions for these phases as
 A \( 6 \by 6 \) example in terms of both beamsplitter reflectivities and MZI
 phase shifts is illustrated in figure~\ref{fig:example}.
 
-\begin{figure*}[h]
-  \includegraphics{figures/example}
-  \caption{(a) A \(6 \by 6\) unitary, expressed in linear optics using a scheme
-    similar to the one in \cite{re-prl-73-58}. (b) The appropriate \pdf{}s for
-    choosing beamsplitter reflectivities to achieve Haar random unitaries, with
-    colours corresponding to (a). The reflectivities of beamsplitters on the
-    bottom row can be chosen uniformly from the interval \(\left[ 0,1 \right)\),
-    while those on higher rows are chosen from according to polynomials
-    increasingly biased towards lower reflectivities. (c) Equivalent
-    distributions for an implementation of variable reflectivity beamsplitters
-    using an internal phase shift in a Mach Zehnder interferometer (MZI). This
-    is relevant to realisations in integrated optics. Colours again correspond
-    to the rows in (a) and the line colours in (b).}
-  \label{fig:example}
-\end{figure*}
-
 We now extend the result to the case of a unitary operating on qubits by
 demonstrating a mapping between a unitary on \(m=2^{n}\) optical modes and an
-operation on \(n\) qubits. This mapping is not efficient, since the number of
-modes required grows exponentially with the number of qubits.
-  
+operation on \(n\) qubits.
+Figure~\ref{fig:qubits} illustrates this mapping between the two pictures
+(qubits and liear optics) and makes it clear that for each beamsplitter or phase
+shift in the linear optical picture, there is a corresponding (controlled) phase
+shift in the qubit picture. These phase shifts act like those in the MZIs on an
+integrated optical circuit so can be drawn from the same distributions.
+
+Note that the mapping is not polynomial, since the number of required optical
+modes grows exponentially with the number of qubits. Consequently, the number of
+parameters required to express a unitary operating on \(n\) qubits also grows
+exponentially with the number of qubits.
 We have shown how to express the probability density function for Haar random
 unitary matrices in terms of physically motivated parameters. The expression is
 compact and non-redundant, whereas the equivalent in the Cartesian basis is a
@@ -320,6 +328,39 @@ is applicable to \bosonsampling{}, where Haar unitaries are required, and is
 extensible to systems of qubits so may find additional applications outside of
 linear optics.
 
+\begin{figure*}[h]
+  \includegraphics{figures/qubits}
+  \caption{Mapping between a linear optical circuit and a unitary operating on
+    qubits. A shorthand is used in the qubit picture for multiple control of
+    operations. A solid circle on a qubit indicates that the operation is
+    performed conditional on the `1' state of the control qubit, while an empty
+    circle indicates controlling the operation on the `0' state. The gates
+    labelled \(\phi\) indicate performing a phase shift of \(\phi\) radians on
+    the `1' state of the affected qubit and those labelled \(\overline{\phi}\)
+    perform a phase shift of \(\phi\) radians on the `0' state of the affected
+    qubit. \\
+    In (a) the 2-qubit (4 optical mode) unitary is drawn out explicitly.
+    (b-d) correspond to the elementary operations for a 3 qubit (8 optical mode)
+    unitary. (b) shows how a phase shift on any of the modes can be
+    implemented. \\
+    The beamsplitters in (c) are in the `even' positions, meaning that they
+    operate on pairs of modes that differ only in the state of the third (final)
+    qubit. These can be implemented in the qubit picture by controlled phases
+    between Hadamard gates. \\
+    (d) deals with the `odd' beamsplitters, which act on
+    pairs of modes that may differ in the state of more than one qubit. In this
+    case, a series of multiply-controlled NOT gates are required as well as the
+    Hadamards. In both (c) and (d) any subset of the beamsplitters may be
+    implemented on qubits by simply omitting controlled phases where
+    appropriate. \\
+    The unitary in the qubit picture are the phases in the controlled-\(\phi\)
+    gates. There is a one-to-one mapping between these phases and those in the
+    Mach Zehnder interferometers of a linear optical circuit so in order to
+    choose a Haar random unitary, we can use the distributions expressed in
+    figure~\ref{fig:example}(c).}
+  \label{fig:qubits}
+\end{figure*}
+  
 \bibliography{bib/dialling}
 
 \end{document}

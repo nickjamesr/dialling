@@ -1,5 +1,5 @@
-figures=$(addprefix figures/, cascade.pdf example.pdf graphs.pdf\
- matrix.pdf recursive.pdf unitary.pdf graphs.pdf)
+figures=$(addprefix figures/, cascade.pdf example.pdf matrix.pdf qubits.pdf\
+ recursive.pdf unitary.pdf)
 
 dialling.pdf : dialling.tex bib/dialling.bib $(figures)
 	pdflatex dialling
@@ -25,5 +25,4 @@ summary.pdf : summary/summary.tex
 	cd summary && $(MAKE)
 
 tar :
-	@tar -cvzf dialling.tar.gz dialling.tex figs/*.tex figs/*.eps \
-bib/dialling.bib makefile
+	@tar -cvzf dialling.tar.gz dialling.tex figures/*.pdf bib/dialling.bib
