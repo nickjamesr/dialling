@@ -24,5 +24,6 @@ summary : summary.pdf
 summary.pdf : summary/summary.tex
 	cd summary && $(MAKE)
 
-tar :
-	@tar -cvzf dialling.tar.gz dialling.tex figures/*.pdf bib/dialling.bib
+tar : dialling.tex dialling.pdf $(figures) bib/dialling.bib
+	@tar -cvzf dialling.tar.gz dialling.tex dialling.pdf figures/*.pdf \
+	bib/dialling.bib

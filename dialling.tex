@@ -145,11 +145,11 @@ from here. Consider the complex Gaussian vector in \(n\) dimensions:
     z_{n-1}
   \end{pmatrix}
 \end{equation}
-where the \(z_i\) are i.i.d. Gaussian complex numbers, \( z \sim \exp \left(
--\abs{z}^2 \right) \). Because of their independence, the probability
-density function (\pdf{}) for \(\vec{v}_n\) is the product of the \pdf{}s for
-the elements and depends only on the magnitude of the vector. Let \(x_i
-= \abs{z_i}^2 \), then:
+where the \(z_i\) are i.i.d. Gaussian complex numbers, \( \prob{P}_{z} \of{z} =
+\exp \left( -\abs{z}^2 \right) \). Because of their independence, the
+probability density function (\pdf{}) for \(\vec{v}_n\) is the product of the
+\pdf{}s for the elements and depends only on the magnitude of the vector. Let
+\(x_i = \abs{z_i}^2 \), then:
 \begin{equation}
   \label{eq:vec}
   \prob{P}_{\vec{v}_n} = e^{ -\left(x_0 + x_1 + \dots + x_{n-1} \right)} = e^{
@@ -236,7 +236,7 @@ This reduces the matrix to a bidiagonal form with the same determinant as \(
     0 & 0 & -1 & & 0 \\
     & \vdots & & \ddots & \vdots \\
     0 & 0 & 0 & & 1 \\
-    0 & 0 & 0 & \vdots & -1 
+    0 & 0 & 0 & \cdots & -1 
   \end{pmatrix}
 \end{equation*}
 demonstrating that the determinant of the matrix \( \mat{J}^{\prime} \) is \(
@@ -262,8 +262,7 @@ normalised. Since the \pdf{} is seperable in this basis, the variables \( r_i
   \end{matrix} \right.
 \end{equation}
 We now integrate over \(r_{0}\) to obtain a compact form for the \pdf{} of
-\(n\)-dimensional \emph{unit} vectors. This step is necessary because unit
-vectors have magnitude 1, therefore \(r_0=0\) by definition. The \pdf{} is:
+\(n\)-dimensional \emph{unit} vectors,
 \begin{equation}
   \prob{P}_{ \vec{u}_n } = \left( n-1 \right)! \prod_{k=1}^{n-1} \left( 1-r_k
   \right)^{n-k-1}
