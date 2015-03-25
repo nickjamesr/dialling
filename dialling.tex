@@ -288,7 +288,7 @@ be chosen from the uniform distribution on \( \left[ 0,\pi \right) \) (since the
 expression for the \pdf{} has no explicit dependence on these parameters) and
 the beamplitters are chosen according to:
 \begin{equation}
-  r_{i,j} \sim \left( i-j \right) \left( 1-r_{i,j} \right)^{i-j-1}
+  \prob{P}_{r_{i,j}}\of{r} = \left( i-j \right) \left( 1-r \right)^{i-j-1}
 \end{equation}
 
 We note that devices fabricated in integrated optics often use a Mach Zehnder
@@ -297,12 +297,25 @@ case, the most relevant parameter is no longer the reflectivity, but the
 internal phase shift, \(\theta\), in the MZI. A further change of variables
 gives us the equivalent distributions for these phases as
 \begin{equation}
-  \theta_{i,j} \sim \sin \of{\frac{\theta_{i,j}}{2}}
-  \cos \of{\frac{\theta_{i,j}}{2}}^{2 \left(i-j\right)-1} 
+  \prob{P}_{\theta_{i,j}}\of{\theta} = \left( i-j \right) \sin
+  \of{\frac{\theta}{2}} \cos \of{\frac{\theta}{2}}^{2 \left(i-j\right)-1} 
 \end{equation}
 (using the same numbering system as before).
 A \( 6 \by 6 \) example in terms of both beamsplitter reflectivities and MZI
 phase shifts is illustrated in figure~\ref{fig:example}.
+
+The index \(i\) in the above expressions refers to the position of the
+\(\mat{R}\) block (see figure~\ref{fig:recursive}) containing the beamsplitter
+(MZI). \(j\) refers to the position within the block. Figure~\ref{fig:example}
+labels beamsplitters in a \(6 \by 6\) unitary according to this convention. An
+alternative labelling is the row \(n\) of the Reck scheme in which the component
+appears (indexing from 1 from the bottom). According to this convention, the
+\pdf{}s can be rewritten as:
+\begin{align}
+  \prob{P}_{r_{n}} &= n \left( 1-r \right)^{n-1} \\
+  \prob{P}_{\theta_{n}} &= n \sin \of{ \frac{\theta}{2} } \cos \of{ \frac{
+  \theta}{2}}^{\left( 2n-1 \right)}
+\end{align}
 
 We now extend the result to the case of a unitary operating on qubits by
 demonstrating a mapping between a unitary on \(m=2^{n}\) optical modes and an
@@ -317,6 +330,7 @@ Note that the mapping is not polynomial, since the number of required optical
 modes grows exponentially with the number of qubits. Consequently, the number of
 parameters required to express a unitary operating on \(n\) qubits also grows
 exponentially with the number of qubits.
+
 We have shown how to express the probability density function for Haar random
 unitary matrices in terms of physically motivated parameters. The expression is
 compact and non-redundant, whereas the equivalent in the Cartesian basis is a
