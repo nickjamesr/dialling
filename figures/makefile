@@ -4,7 +4,8 @@ else
 inkscape=inkscape
 endif
 
-default : cascade.pdf example.pdf graphs.pdf matrix.pdf reck_nxn.pdf unitary.pdf
+default : cascade.pdf example.pdf graphs.pdf matrix.pdf recursive.pdf\
+ unitary.pdf
 
 cascade.pdf : cascade.eps cascade.pyx
 	pyxplot cascade.pyx
@@ -18,8 +19,8 @@ example.pdf : example.eps example.pyx
 matrix.pdf : matrix.eps matrix.pyx
 	pyxplot matrix.pyx
 
-reck_nxn.pdf : reck_nxn.eps reck_nxn.pyx
-	pyxplot reck_nxn.pyx
+recursive.pdf : recursive.eps recursive.pyx
+	pyxplot recursive.pyx
 
 unitary.pdf : unitary.eps components.eps unitary.pyx
 	pyxplot unitary.pyx

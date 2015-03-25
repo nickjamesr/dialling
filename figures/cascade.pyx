@@ -12,13 +12,13 @@ set multiplot
   text "\(r_{0}\)" at 0,43*fig_m
   text "\(r_{1}\)" at 15*fig_m,43*fig_m
   text "\(r_{2}\)" at 35*fig_m,33*fig_m
-  text "\(r_{n-1}\)" at 72*fig_m,13*fig_m
+  text "\(r_{m-1}\)" at 72*fig_m,13*fig_m
 
   # Cartesian labels
   text "\(x_{0}\)" at 98*fig_m,43*fig_m
   text "\(x_{1}\)" at 98*fig_m,33*fig_m
-  text "\(x_{n-2}\)" at 98*fig_m,13*fig_m
-  text "\(x_{n-1}\)" at 98*fig_m,3*fig_m
+  text "\(x_{m-2}\)" at 98*fig_m,13*fig_m
+  text "\(x_{m-1}\)" at 98*fig_m,3*fig_m
 
   set display
   refresh
