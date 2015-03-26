@@ -1,5 +1,5 @@
-figures=$(addprefix figures/, cascade.pdf example.pdf matrix.pdf qubits.pdf\
- recursive.pdf unitary.pdf)
+figures=$(addprefix figures/, cascade.pdf example.pdf integrated.pdf matrix.pdf\
+ qubits.pdf recursive.pdf unitary.pdf)
 
 dialling.pdf : dialling.tex bib/dialling.bib $(figures)
 	pdflatex dialling

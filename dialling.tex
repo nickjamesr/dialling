@@ -10,7 +10,7 @@
 \newcommand{\mat}[1]{\mathrm{#1}}
 \newcommand{\by}{\times}
 \newcommand{\of}[1]{\!\left(#1\right)}
-\newcommand{\pdf}{{\it pdf}}
+\newcommand{\pdf}{{pdf}}
 \newcommand{\abs}[1]{\left|#1\right|}
 \newcommand{\prob}[1]{\mathcal{#1}}
 \newcommand{\bosonsampling}{\textsc BosonSampling}
@@ -64,21 +64,17 @@ unitaries.
 \begin{figure*}[t]
   \includegraphics{figures/example}
   \caption{(a) A \(6 \by 6\) unitary, expressed in linear optics using a scheme
-    similar to the one in \cite{re-prl-73-58}. (b) The appropriate \pdf{}s for
-    choosing beamsplitter reflectivities to achieve Haar random unitaries.
-    he reflectivities of beamsplitters on the
+    similar to the one in \cite{re-prl-73-58}. (b) The \pdf{}s for
+    beamsplitter reflectivities required to achieve Haar random unitaries.
+    The reflectivities of beamsplitters on the
     bottom row can be chosen uniformly from the interval \(\left[ 0,1 \right)\),
     while those on higher rows are chosen from according to polynomials
-    increasingly biased towards lower reflectivities. (c) Equivalent
-    distributions for an implementation of variable reflectivity beamsplitters
-    in integrated optics, where the reflectivity is controlled by a Mach Zehnder
-    interferometer (MZI) composed of a variable phase shift between two 50:50
-    directional couplers. (d) Another implementation of variable reflectivity
-    beamsplitters where the MZI is composed of a variable phase shift between
-    two 50:50 beamsplitters. Here the \pdf{}s for phase \(\xi\) are biased
-    towards \(\xi=\pi\). These distributions are appropriate for the controlled
-    phases between Hadamard gates in the qubit picture. Line colours in (b-d)
-    correspond to shaded regions in (a).}
+    increasingly biased towards lower reflectivities. (c) A variable
+    reflectivity beamsplitter can be implemented using a Mach Zehnder
+    interferometer (MZI), composed of a phase shift, \(\theta\) between two
+    50:50 beamsplitters (Hadamard operations). The phases may be chosen directly
+    from the distributions shown, with increasing bias towards \(\theta=\pi\).
+    Line colours in (b) and (c) correspond to shading in (a).}
   \label{fig:example}
 \end{figure*}
 
@@ -104,19 +100,13 @@ unitary description of the circuit being implemented, but need a guarantee that
 it is drawn from the correct distribution. While similar parameterisations exist
 in the mathematical literature \cite{sp-jmp-53-013501, zy-jpa-27-4235}, the
 relevance to linear optics is not widely appreciated. Further, we extend the
-result to systems of qubits, by making the connection between a linear-optical
+result to systems of qubits, by deriving a mapping between a linear-optical
 circuit on \(m=2^{n}\) modes and a circuit operating on \(n\) qubits.
-
-We begin by briefly introducing a general unitary parameterisation on an
-\(m\)-dimensional space and continue to describe the method for drawing Haar
-unitaries in this picture, including a simplo proof of validity. We go on to
-explicitly describe a mapping between linear optical circuits and qubit
-circuits, and apply the same results to this system.
 
 Drawing a Haar random unitary is analogous to choosing a random number from a
 uniform distribution in that it should be unbiased. The probability of drawing
 a particular unitary matrix from some region in the space of unitaries should
-be in direct proportion to the volume of the region, as defined by the Haar
+be in direct proportion to the volume of the region as defined by the Haar
 measure, which is the unique translation-invariant measure on the space of
 unitaries \cite{re-phd}. As argued in \cite{re-phd}, if \(m\) vectors \(\left\{
 v_{i} \right\} = \left\{ v_{1}, v_{2}, \cdots, v_{m} \right\}\) are successively
@@ -126,11 +116,10 @@ they form the columns of a Haar random unitary. The problem of choosing Haar
 random unitaries thus reduces to the problem of drawing such a set of orthogonal
 vectors.
 
-We approach this problem by considering a general linear optical circuit, which
-suggests a recursive strategy for achieving the appropriate set of vectors.
-Figure~\ref{fig:recursive} shows a recursive strategy for a physical
-implementation
-of any unitary matrix on \(m\) modes. Each block labelled \(\mat{R}_{n}\) takes
+We approach this problem by considering a general linear optical circuit, shown
+in figure~\ref{fig:recursive}, which suggests a recursive strategy for
+achieving the appropriate set of \(m\) vectors for a unitary operation on \(m\)
+modes. Each block labelled \(\mat{R}_{n}\) takes
 as input the basis state \( \ket{m-n}\) and performs a unitary operation to
 produce the \(n\)-dimensional vector \(\ket{v_n}\). Orthogonality is preserved
 as this vector is transformed by all subsequent \(\mat{R}_{i}\). Further, if the
@@ -143,15 +132,11 @@ unbiased unit vectors, in \(n\) dimensions. Figure~\ref{fig:cascade} expands one
 of the \(\mat{R}_{i}\) in terms of linear optical components, and we proceed
 from here. Consider the complex Gaussian vector in \(n\) dimensions:
 \begin{equation}
-  \vec{v}_n = \begin{pmatrix}
-    z_0 \\
-    z_1 \\
-    \vdots \\
-    z_{n-1}
-  \end{pmatrix}
+  \ket{\vec{v}_{n}} = \sum_{i=0}^{n-1} z_{i} \ket{i} = \sum_{i=0}^{n-1} \tau_{i}
+  e^{i \alpha_{i}} \ket{i}
 \end{equation}
-where the \(z_i\) are i.i.d. Gaussian complex numbers, \( \prob{P}_{z} \of{z} =
-\exp \left( -\abs{z}^2 \right) \). Because of their independence, the
+where the \(z_i\) are i.i.d. Gaussian complex numbers, \( \prob{P}_{z} \of{z}
+\propto \exp \left( -\abs{z}^2 \right) \). Because of their independence, the
 probability density function (\pdf{}) for \(\vec{v}_n\) is the product of the
 \pdf{}s for the elements and depends only on the magnitude of the vector. Let
 \(x_i = \abs{z_i}^2 \), then:
@@ -163,203 +148,141 @@ probability density function (\pdf{}) for \(\vec{v}_n\) is the product of the
 Now consider the change of variables from this basis~\(\vec{x}\), which we call
 the Cartesian basis, to a new basis,~\(\vec{r}\):
 \begin{align}
-  x_i &= r_0 \left[ \prod_{k=1}^{i} \left( 1-r_k \right) \right] r_{i+1} &
-    \left( 0 \leq i < n-1 \right) \\
-  x_{n-1} &= r_0 \left[ \prod_{k=1}^{n-1} \left( 1-r_k \right) \right] \\
   r_0 &= \sum_{k=0}^{n-1} x_k \\
-  r_i &= \frac{x_{i-1}}{\sum_{k=i}^{n-1} x_k} & \left( 0 < i \leq n-1 \right)
+  r_i &= \frac{x_{i-1}}{\sum_{k=i}^{n-1} x_k} & \left( 0 < i \leq n-1 \right) \\
+  \phi_i &= \alpha_{i}
 \end{align}
 We refer to \(\vec{r}\) as the physical basis because the variables
 correspond directly to components in a physical realisation of the vector in
 linear optics. In particular, \(r_0\) is the power of the input and the other
 \(r_i\) are reflectivities of beamsplitters. The relationship between
 \(\vec{x}\), \(\vec{r}\) and the physical system is shown in
-figure~\ref{fig:reck}. The phases \(\phi_{ij}\) and \(\alpha_i\) do
-not appear in either basis.
+figure~\ref{fig:reck}.
 
 In order for this parameterisation to be useful, we must show that the \pdf{}
 for the vector \(\vec{v}_n\) is separable in the physical basis so that the
 experimental parameters can be chosen independently. We also need to derive the
-form of the marginal distributions for the \(r_i\). These will be the
-distributions from which experimental parameters must be chosen to obtain a Haar
-unitary. The change of variables is performed using the Jacobian, as follows:
+form of the marginal distributions for the \(r_i\) and \(\phi_{i}\). These will
+be the distributions from which experimental parameters must be chosen to
+obtain a Haar unitary. Since there is no functional dependence on the
+\(\alpha_{i}\) parameters in equation~\ref{eq:vec} and there is a one-to-one
+mapping \(\alpha_{i} \rightarrow \phi_{i}\), these phases can be chosen
+uniformly and independently from the interval \(\left[0,2\pi\right)\)
+
+Finding the \pdf{}s for the beamsplitter reflectivities requires a more careful
+change in bases, using the Jacobian:
 \begin{equation}
   \prob{P}_{\vec{v}_n} \of{\vec{r}} = \prob{P}_{\vec{v}_n} \of{\vec{x}}
   \abs{\det \mat{J} \of{\vec{x}, \vec{r}}}
 \end{equation}
 where
 \begin{equation}
-  \mat{J}_{ij} \of{\vec{x}, \vec{r}} = \frac{\partial x_{i}}{\partial r_j}
+  \mat{J}_{i,j} \of{\vec{x}, \vec{r}} = \frac{\partial x_{i}}{\partial r_j}
 \end{equation}
 Equation~\ref{eq:vec} is expressed in the \(\vec{r}\) basis simply as \(\exp
-\of{-r_0}\), so is trivially seperable. We now just have to show that the
-Jacobian determinant is also seperable.
+\of{-r_0}\), so is trivially separable. We now consider the Jacobian
+determinant, which is described by the four cases:
+\begin{align}
+  \mat{J}_{i,j} &= r_{i+1} \prod_{k=1}^{i} \left( 1-r_k \right) && j=0 \\
+  \mat{J}_{i,j} &= \frac{-r_0 r_{i+1}}{1-r_{j}} \prod_{k=1}^{i} \left( 1-r_k
+    \right) && 0< j \leq i\\
+  \mat{J}_{i,j} &= r_0 \prod_{k=1}^{i} \left( 1-r_k \right) && j = i+1 \\
+  \mat{J}_{i,j} &= 0 && j>i+1
+\end{align}
+(where the variable \(r_{n}=1\) has been introduced for convenience)
 
-There are 6 different expressions for elements \(\mat{J}_{ij}\) of the
-Jacobian. On the bottom row of the matrix (i.e. \(i=n-1\)) we have:
-\begin{align*}
-  &\left[ \prod_{k=1}^{n-1} \left( 1-r_k \right) \right]& j &= 0 & \\
-  -r_0 &\left[ \prod_{k=1}^{j-1} \left( 1-r_k \right) \right] \left[
-  \prod_{k=j+1}^{n-1} \left( 1-r_k \right) \right]& j &> 0
-  \intertext{And on all other rows}
-  &\left[ \prod_{k=1}^{i} \left( 1-r_k \right) \right] r_{i+1}& j &= 0 \\
-  -r_0 &\left[ \prod_{k=1}^{j-1} \left( 1-r_k \right) \right] \left[
-  \prod_{k+j+1}^{i} \left( 1-r_k \right) \right] r_{i+1}& j &= i+1 \\
-  r_0 &\left[ \prod_{k=1}^{i} \left( 1-r_k \right) \right]& j &> i+1 \\
-  0 & & j &> i+1
-\end{align*}
-
-This is a lower Hessenberg matrix which we now normalise---that is, perform
-columnwise multiplications to make all elements on the first super-diagonal
-equal 1;
-specifically, the \(j^{\text{th}}\) column \( j>0 \) must be divided by \( r_0
-\prod_{k=1}^{j-1} \left( 1-r_k \right) \). The effect of this operation on the
-determinant is:
+A matrix of this form (lower Hessenberg) can always be transformed into a
+lower triangular matrix---for which the determinant is simply the product of the
+diagonal elements---by column operations, which do not change the absolute value
+of the determinant. The first step is to place the \(j=0\) column,
+\(\vec{c}_{0}\), as the rightmost column. The matrix is then lower triangular,
+apart from the upper \(n-1\) terms in \(\vec{c}_{0}\), which are successively
+set to zero with the following set of operations:
 \begin{equation}
-  \abs{ \det \mat{J} \of{ \vec{x}, \vec{r} }} = r_0^{n-1} \prod_{k=1}^{n-2}
-  \left( 1-r_k \right)^{n-k-1} \abs{ \det \mat{J}^{\prime} \of{ \vec{x}, \vec{r}
-  } }
+  \vec{c}_{0}^{\left( k \right)} = \vec{c}_{0}^{\left( k-1 \right)} - c_{k}
+  \frac{\mat{J}_{k-1,0}^{\left( k-1 \right)}}{J_{k-1,k}}
 \end{equation}
-Where \( \mat{J}^{\prime} \) is the normalised matrix. Conveniently \( \abs{
-\det \mat{J}^{\prime} }=1 \), which can be shown by considering a further set of
-columnwise operations. If \( c_i \) refers to the \( i^{\text{th}} \) column of
-a matrix, the substitution \( c_i \rightarrow c_i + k c_j \) for a constant
-scalar \(k\) may be made, without any change to the determinant. Thus, we make
-the following substitutions, without altering the determinant:
-\begin{align*}
-  c_0 &\rightarrow c_0 + \left( 1-r_1 \right) c_1 \\
-  c_1 &\rightarrow c_1 - \left( 1-r_2 \right) c_2 \\
-  \vdots \\
-  c_{n-2} &\rightarrow c_{n-2} - \left( 1-r_{n-1} \right) c_{n-1}
-\end{align*}
-This reduces the matrix to a bidiagonal form with the same determinant as \(
-\mat{J}^{\prime} \):
-\begin{equation*}
-  \begin{pmatrix}
-    1 & 1 & 0 & \cdots & 0 \\
-    0 & -1 & 1 & & 0 \\
-    0 & 0 & -1 & & 0 \\
-    & \vdots & & \ddots & \vdots \\
-    0 & 0 & 0 & & 1 \\
-    0 & 0 & 0 & \cdots & -1 
-  \end{pmatrix}
-\end{equation*}
-demonstrating that the determinant of the matrix \( \mat{J}^{\prime} \) is \(
-\left( -1 \right)^{n+1} \) and therefore
+where \(k\) runs from \(1\) to \(m-1\) and the \(k^{\text{th}}\) operation
+eliminates the \(\left(k-1\right)^{\text{th}}\) element of \(\vec{c}_{0}\) and
+removes dependence on \(r_{k}\) from all remaining entries. After this process
+is complete, only one non-zero entry remains in \(\vec{c}_{0}\) and its value is
+1.
+% Anthony - you had a proof that this is the case, but I didn't understand it
+%           If you can reproduce it here, that would be great.
+We can now compute the determinant by multiplying the diagonal elements of
+the matrix:
 \begin{equation}
-  \abs{ \det \mat{J} } = r_0^{n-1} \prod_{k=1}^{n-1} \left( 1-r_k
-  \right)^{n-k-1}
+  \det \mat{J} \of{ \vec{x}, \vec{r} } = \prod_{i=1}^{n-1} \mat{J}_{i,i}
 \end{equation}
-The explicit form of the \pdf{} in the \(\vec{r}\) basis is
+and the explicit form of the \pdf{} in the \(\vec{r}\) basis is
 \begin{equation}
   \prob{P}_{\vec{v}_n} \of{ \vec{r} } = e^{-r_0} r_0^{n-1} \prod_{k=1}^{n-2}
   \left( 1-r_k \right)^{n-k-1}
 \end{equation}
-which is manifestly seperable.
+which is manifestly separable.
 
 It can be verified by explicit integration that this expression is appropriately
-normalised. Since the \pdf{} is seperable in this basis, the variables \( r_i
-\) are independent, and can be chosen according to their marginal distributions:
-\begin{equation}
-  \prob{P}_{r_i} \of{ r } = \left\{ \begin{matrix}
-    \frac{1}{ \left( n-1 \right)! } r^{n-1} e^{-r} & i=0 \\
-    \left( n-i \right) \left( 1-r \right)^{n-i-1} & 1 \leq i \leq n-1
-  \end{matrix} \right.
-\end{equation}
+normalised. Since the \pdf{} is separable in this basis, the variables \( r_i
+\) are independent, and can be chosen according to their marginal distributions,
+\begin{align}
+  \prob{P}_{r_{i}} \of{r} = \left( n-i \right) \left( 1-r \right)^{n-i-1} &&
+  1 \leq i < n
+\end{align}
 We now integrate over \(r_{0}\) to obtain a compact form for the \pdf{} of
 \(n\)-dimensional \emph{unit} vectors,
 \begin{equation}
   \prob{P}_{ \vec{u}_n } = \left( n-1 \right)! \prod_{k=1}^{n-1} \left( 1-r_k
   \right)^{n-k-1}
 \end{equation}
-
-Finally, to obtain the \pdf{} for the unitary as a whole, we take the product
-of the \pdf{}s for the unit vectors, as follows:
-\begin{align*}
-  \prob{P}_{\mat{U}_{n \by n}} &= \prod_{j=1}^{n} \prob{P}_{\vec{u}_j}
-  \of{\vec{r_j}} \\
-  &= \prod_{j=1}^{n} \left[ \left( j-1 \right)! \prod_{k=1}^{j-1} \left(
-  1-r_{j,k} \right)^{j-k-1} \right]
-\end{align*}
+and express the \pdf{} for the full circuit of beamsplitters,
+\(\prob{P}_{\vec{C}}\) as the product of the \pdf{}s for the diagonal arrays of
+beamsplitters:
+\begin{equation}
+  \prob{P}_{\vec{C}} = \prod_{j=1}^{n} \left[ \left( j-1 \right)!
+  \prod_{k=1}^{j-1} \left( 1-r_{j,k} \right)^{j-k-1} \right]
+\end{equation}
 where \( r_{j,k} \) is the reflectivity of the \( k^{\text{th}} \) beamsplitter
 in the \( j^{\text{th}} \) rotation, \( \mat{R}_j \).
 
-In practical terms, in order to fabricate a Haar unitary in linear optics, we
-don't ever need to know the explicit form of the matrix. We can instead just
-manufacture a network of beamsplitters and phase shifters, with reflectivities
-and phase shifts chosen from the correct distributions. All the phase shifts can
-be chosen from the uniform distribution on \( \left[ 0,\pi \right) \) (since the
-expression for the \pdf{} has no explicit dependence on these parameters) and
-the beamplitters are chosen according to:
-\begin{equation}
-  \prob{P}_{r_{i,j}}\of{r} = \left( i-j \right) \left( 1-r \right)^{i-j-1}
-\end{equation}
-
-Note that devices fabricated in integrated optics implement a variable
-reflectivity beamsplitter using a Mach Zehnder interferometer (MZI) composed of
-a phase shift, \( \theta \) between two 50:50 directional couplers. The matrix
-representation of this component is
-\begin{equation}
-  \mat{MZI} \of{ \theta } = \begin{pmatrix}
-    \cos \of{ \frac{\theta}{2} } & \sin \of{ \frac{\theta}{2} } \\
-    \sin \of{ \frac{\theta}{2} } & -\cos \of{ \frac{\theta}{2} }
-  \end{pmatrix}
-\end{equation}
-In this case, the most relevant parameter is no longer the reflectivity, but the
-internal phase shift, \(\theta\), in the MZI. A further change of variables
-gives us the equivalent distributions for these phases as
-\begin{equation}
-  \prob{P}_{\theta_{i,j}}\of{\theta} = \left( i-j \right) \sin
-  \of{\frac{\theta}{2}} \cos \of{\frac{\theta}{2}}^{2 \left(i-j\right)-1} 
-\end{equation}
-(using the same numbering system as before).
-
-We now extend the result to the case of a unitary operating on qubits by
-demonstrating a mapping between a unitary on \(m=2^{n}\) optical modes and an
-operation on \(n\) qubits.
-Figure~\ref{fig:qubits} illustrates this mapping between the qubit picture and
-the linear optics picture. When dealing with the qubit picture, the equivalent
-of a beamsplitter on two optical modes is a controlled phase shift between two
-Hadamard gates. The \pdf{}s for these phases are similar but slighly different
-to those in the integrated optics picture. The matrix representation of the MZI
-in terms of the phase shift, \(\xi\) is
-\begin{equation}
-  \mat{MZI} \of{ \xi } = \begin{pmatrix}
-    \sin \of{ \frac{\xi}{2} } & i \cos \of{ \frac{\xi}{2} } \\
-    i \cos \of{ \frac{\xi}{2} } & sin \of{ \frac{\xi}{2} }
-  \end{pmatrix}
-\end{equation}
-and the \pdf{} for the phase is
-\begin{equation}
-  \prob{P}_{ \xi_{i,j} } \of{ \xi } = \left( i-j \right) \cos \of{ \frac{ \xi
-  }{2} } \sin \of{ \frac{ \xi }{2} }^{ 2 \left( i-j \right)-1}
-\end{equation}
-
-This mapping is not polynomial, since the number of required optical
-modes grows exponentially with the number of qubits. Consequently, the number of
-parameters required to express a unitary operating on \(n\) qubits also grows
-exponentially with the number of qubits. Further, the scheme presented may not
-be optimal in terms of gate count, but has been chosen to make clear the mapping
-between qubits operations and linear optical operations on modes.
-
-A \( 6 \by 6 \) example in terms of beamsplitter reflectivities, integrated MZIs
-(using directional couplers) and phase shifts on qubits, is illustrated in
+In practical terms, an optical circuit conforming to a Haar unitary can be
+fabricated with reflectivities and phase shifts chosen from the correct
+distributions, as described here. A \( 6 \by 6 \) example is illustrated in
 figure~\ref{fig:example}.
 
-The index \(i\) in the above expressions refers to the position of the
-\(\mat{R}\) block (see figure~\ref{fig:recursive}) containing the beamsplitter
-(MZI). \(j\) refers to the position within the block. Figure~\ref{fig:example}
-labels beamsplitters in a \(6 \by 6\) unitary according to this convention. An
-alternative labelling is the row \(n\) of the Reck scheme in which the component
-appears (indexing from 1 from the bottom). According to this convention, the
-\pdf{}s can be rewritten as:
+We now extend the result to the case of a unitary operating on qubits by
+demonstrating a mapping between a unitary operation on \(m=2^{n}\) optical
+modes and the same unitary operation on \(n\) qubits. The gates that we use to
+construct the mapping are the Hadamard gate, the CNOT gate (generalised to
+include multiple control) and variable phase gates, which implement a general
+phase rotation on a qubit, as follows:
 \begin{align}
-  \prob{P}_{r_{n}} &= n \left( 1-r \right)^{n-1} \\
-  \prob{P}_{\theta_{n}} &= n \sin \of{ \frac{\theta}{2} } \cos \of{ \frac{
-  \theta}{2}}^{\left( 2n-1 \right)} \\
-  \prob{P}_{\xi_{n}} &= n \cos \of{ \frac{\xi}{2} } \sin \of{ \frac{\xi}{2} }^{
-  \left( 2n-1 \right) }
+  \Phi &= \begin{pmatrix}
+    1 & 0 \\
+    0 & e^{i\phi}
+  \end{pmatrix} &
+  \overline{\Phi} &= \begin{pmatrix}
+    e^{i\phi} & 0 \\
+    0 & 1
+  \end{pmatrix}
 \end{align}
+Figure~\ref{fig:qubits} illustrates how this mapping is constructed, including
+an explicit example of 2 qubits or 4 optical modes. Each optical phase is
+implemented by a \(\Phi\) gate, and each beamsplitter is implemented by a
+\(\Phi\) gate between two Hadamards (\(\mathrm{H \cdot \Phi \cdot H}\)),
+effectively implementing a Mach Zehnder interferometer (MZI).
+
+The existence of this mapping means that we can directly apply the results
+described above to the implementation of Haar unitaries in systems of qubits,
+with the only difference being the description of a varible reflectivity element
+in terms of the internal phase \(\theta\) in an MZI. A further change of
+variables, \(r = \sin^{2} \of{\theta} \) is required, and the appropriate
+\pdf{}s for these elements are then:
+\begin{equation}
+  \prob{P}_{\theta_{i}} \of{ \theta } = \left( n-i \right) \cos \of{
+  \frac{\theta}{2} } \sin \of{ \frac{\theta}{2} }^{2 \left(n-i\right) -1}
+\end{equation}
+These distributions are illustrated in figure~\ref{fig:example} alongside those
+for reflectivities.
 
 We have shown how to express the probability density function for Haar random
 unitary matrices in terms of physically motivated parameters. The expression is
@@ -380,8 +303,8 @@ linear optics.
     performed conditional on the `1' state of the control qubit, while an empty
     circle indicates controlling the operation on the `0' state. The gates
     labelled \(\phi\) indicate performing a phase shift of \(\phi\) radians on
-    the `1' state of the affected qubit and those labelled \(\overline{\phi}\)
-    perform a phase shift of \(\phi\) radians on the `0' state of the affected
+    the `1' state of the target qubit and those labelled \(\overline{\phi}\)
+    perform a phase shift of \(\phi\) radians on the `0' state of the target
     qubit. \\
     In (a) the 2-qubit (4 optical mode) unitary is drawn out explicitly.
     (b-d) correspond to the elementary operations for a 3 qubit (8 optical mode)
@@ -397,15 +320,77 @@ linear optics.
     Hadamards. In both (c) and (d) any subset of the beamsplitters may be
     implemented on qubits by simply omitting controlled phases where
     appropriate. \\
-    The unitary in the qubit picture are the phases in the controlled-\(\phi\)
-    gates. There is a one-to-one mapping between these phases and those in the
-    Mach Zehnder interferometers of a linear optical circuit so in order to
+    The parameters in the qubit picture are the phases in the
+    controlled-\(\phi\)
+    gates. There is a one-to-one mapping between these phases and the
+    beamsplitters in a linear optical circuit so in order to
     choose a Haar random unitary, we can use the distributions expressed in
     figure~\ref{fig:example}(d).}
   \label{fig:qubits}
 \end{figure*}
   
-\clearpage
 \bibliography{bib/dialling}
+
+\clearpage
+\appendix
+\section{Variable reflectivity beamsplitters}
+
+The discussion of linear optical circuits in linear optics makes use of a
+variable reflectivity beamsplitter as a primitive component. In terms of the
+power reflectivity, \(r\), the matrix describing this component is
+\begin{equation}
+  \mat{BS} \of{r} = \begin{pmatrix}
+    \sqrt{r} & \sqrt{1-r} \\
+    \sqrt{1-r} & -\sqrt{r}
+  \end{pmatrix}
+\end{equation}
+In the qubit picture, we avoid implement a variable-reflectivity beamsplitter as
+a variable phase shift, \(\theta\) between two Hadamard operations. The matrix
+representation of this component is (down to global phase)
+\begin{equation}
+  \mat{MZI}_{\mat{H}} \of{\theta} = \begin{pmatrix}
+    \cos \of{ \frac{\theta}{2} } & i \sin \of{ \frac{\theta}{2} } \\
+    i \sin \of{ \frac{\theta}{2} } & \cos \of{ \frac{\theta}{2} }
+  \end{pmatrix}
+\end{equation}
+We use the coordinate transformation \( r \rightarrow \cos \of{ ^{\theta}/_{2}}
+\) to find the \pdf{}s in terms of this phase shift, rather than the
+reflectivity.
+
+An implementation in integrated optics would be similar, but instead of using
+the Hadamard,
+\begin{equation}
+  \mat{H} = \frac{1}{\sqrt{2}} \begin{pmatrix}
+    1 & 1 \\
+    1 & -1
+  \end{pmatrix}
+\end{equation}
+we use directional couplers, which implement the symmetric version
+\begin{equation}
+  \mat{DC} = \frac{1}{\sqrt{2}} \begin{pmatrix}
+    1 & i \\
+    i & 1
+  \end{pmatrix}
+\end{equation}
+
+\begin{figure}[h]
+  \includegraphics{figures/integrated}
+  \caption{\pdf{}s for phase shifts in integrated optics. The colours correspond
+to the shading in figure~\ref{fig:example}(a). The distributions are skewed
+towards \(\xi=0\).}
+  \label{fig:integrated}
+\end{figure}
+
+The resulting MZI is described in terms of its internal phase \(\xi\) (again,
+down to a global phase) by the matrix
+\begin{equation}
+  \mat{MZI}_{\mat{DC}} \of{\xi} = \begin{pmatrix}
+    \sin \of{ \frac{\xi}{2} } & \cos \of{ \frac{\xi}{2} } \\
+    \cos \of{ \frac{\xi}{2} } & -\sin \of{ \frac{\xi}{2} }
+  \end{pmatrix}
+\end{equation}
+The appropriate transformation between reflectivity and internal phase is now
+\(r \rightarrow \sin \of{^{\xi}/_{2}} \), resulting in different \pdf{}s, which
+are shown in figure~\ref{fig:integrated}
 
 \end{document}
