@@ -13,8 +13,11 @@ cascade.pdf : cascade.eps cascade.pyx
 %.eps : %.svg
 	$(inkscape) -E $*.eps $<
 
-example.pdf : example.eps beamsplitter.eps bsmzi.eps dcmzi.eps example.pyx
+example.pdf : example.eps beamsplitter.eps bsmzi.epsexample.pyx
 	pyxplot example.pyx
+
+integrated.pdf : dcmzi.eps integrated.pyx
+	pyxplot integrated.pyx
 
 matrix.pdf : matrix.eps matrix.pyx
 	pyxplot matrix.pyx
