@@ -65,15 +65,20 @@ unitaries.
   \includegraphics{figures/example}
   \caption{(a) A \(6 \by 6\) unitary, expressed in linear optics using a scheme
     similar to the one in \cite{re-prl-73-58}. (b) The appropriate \pdf{}s for
-    choosing beamsplitter reflectivities to achieve Haar random unitaries, with
-    colours corresponding to (a). The reflectivities of beamsplitters on the
+    choosing beamsplitter reflectivities to achieve Haar random unitaries.
+    he reflectivities of beamsplitters on the
     bottom row can be chosen uniformly from the interval \(\left[ 0,1 \right)\),
     while those on higher rows are chosen from according to polynomials
     increasingly biased towards lower reflectivities. (c) Equivalent
     distributions for an implementation of variable reflectivity beamsplitters
-    using an internal phase shift in a Mach Zehnder interferometer (MZI). This
-    is relevant to realisations in integrated optics. Colours again correspond
-    to the rows in (a) and the line colours in (b).}
+    in integrated optics, where the reflectivity is controlled by a Mach Zehnder
+    interferometer (MZI) composed of a variable phase shift between two 50:50
+    directional couplers. (d) Another implementation of variable reflectivity
+    beamsplitters where the MZI is composed of a variable phase shift between
+    two 50:50 beamsplitters. Here the \pdf{}s for phase \(\xi\) are biased
+    towards \(\xi=\pi\). These distributions are appropriate for the controlled
+    phases between Hadamard gates in the qubit picture. Line colours in (b-d)
+    correspond to shaded regions in (a).}
   \label{fig:example}
 \end{figure*}
 
@@ -290,9 +295,17 @@ the beamplitters are chosen according to:
   \prob{P}_{r_{i,j}}\of{r} = \left( i-j \right) \left( 1-r \right)^{i-j-1}
 \end{equation}
 
-We note that devices fabricated in integrated optics often use a Mach Zehnder
-inteferometer (MZI) to realise a variable reflectivity beamsplitter. In this
-case, the most relevant parameter is no longer the reflectivity, but the
+Note that devices fabricated in integrated optics implement a variable
+reflectivity beamsplitter using a Mach Zehnder interferometer (MZI) composed of
+a phase shift, \( \theta \) between two 50:50 directional couplers. The matrix
+representation of this component is
+\begin{equation}
+  \mat{MZI} \of{ \theta } = \begin{pmatrix}
+    \cos \of{ \frac{\theta}{2} } & \sin \of{ \frac{\theta}{2} } \\
+    \sin \of{ \frac{\theta}{2} } & -\cos \of{ \frac{\theta}{2} }
+  \end{pmatrix}
+\end{equation}
+In this case, the most relevant parameter is no longer the reflectivity, but the
 internal phase shift, \(\theta\), in the MZI. A further change of variables
 gives us the equivalent distributions for these phases as
 \begin{equation}
@@ -300,8 +313,38 @@ gives us the equivalent distributions for these phases as
   \of{\frac{\theta}{2}} \cos \of{\frac{\theta}{2}}^{2 \left(i-j\right)-1} 
 \end{equation}
 (using the same numbering system as before).
-A \( 6 \by 6 \) example in terms of both beamsplitter reflectivities and MZI
-phase shifts is illustrated in figure~\ref{fig:example}.
+
+We now extend the result to the case of a unitary operating on qubits by
+demonstrating a mapping between a unitary on \(m=2^{n}\) optical modes and an
+operation on \(n\) qubits.
+Figure~\ref{fig:qubits} illustrates this mapping between the qubit picture and
+the linear optics picture. When dealing with the qubit picture, the equivalent
+of a beamsplitter on two optical modes is a controlled phase shift between two
+Hadamard gates. The \pdf{}s for these phases are similar but slighly different
+to those in the integrated optics picture. The matrix representation of the MZI
+in terms of the phase shift, \(\xi\) is
+\begin{equation}
+  \mat{MZI} \of{ \xi } = \begin{pmatrix}
+    \sin \of{ \frac{\xi}{2} } & i \cos \of{ \frac{\xi}{2} } \\
+    i \cos \of{ \frac{\xi}{2} } & sin \of{ \frac{\xi}{2} }
+  \end{pmatrix}
+\end{equation}
+and the \pdf{} for the phase is
+\begin{equation}
+  \prob{P}_{ \xi_{i,j} } \of{ \xi } = \left( i-j \right) \cos \of{ \frac{ \xi
+  }{2} } \sin \of{ \frac{ \xi }{2} }^{ 2 \left( i-j \right)-1}
+\end{equation}
+
+This mapping is not polynomial, since the number of required optical
+modes grows exponentially with the number of qubits. Consequently, the number of
+parameters required to express a unitary operating on \(n\) qubits also grows
+exponentially with the number of qubits. Further, the scheme presented may not
+be optimal in terms of gate count, but has been chosen to make clear the mapping
+between qubits operations and linear optical operations on modes.
+
+A \( 6 \by 6 \) example in terms of beamsplitter reflectivities, integrated MZIs
+(using directional couplers) and phase shifts on qubits, is illustrated in
+figure~\ref{fig:example}.
 
 The index \(i\) in the above expressions refers to the position of the
 \(\mat{R}\) block (see figure~\ref{fig:recursive}) containing the beamsplitter
@@ -313,22 +356,10 @@ appears (indexing from 1 from the bottom). According to this convention, the
 \begin{align}
   \prob{P}_{r_{n}} &= n \left( 1-r \right)^{n-1} \\
   \prob{P}_{\theta_{n}} &= n \sin \of{ \frac{\theta}{2} } \cos \of{ \frac{
-  \theta}{2}}^{\left( 2n-1 \right)}
+  \theta}{2}}^{\left( 2n-1 \right)} \\
+  \prob{P}_{\xi_{n}} &= n \cos \of{ \frac{\xi}{2} } \sin \of{ \frac{\xi}{2} }^{
+  \left( 2n-1 \right) }
 \end{align}
-
-We now extend the result to the case of a unitary operating on qubits by
-demonstrating a mapping between a unitary on \(m=2^{n}\) optical modes and an
-operation on \(n\) qubits.
-Figure~\ref{fig:qubits} illustrates this mapping between the two pictures
-(qubits and liear optics) and makes it clear that for each beamsplitter or phase
-shift in the linear optical picture, there is a corresponding (controlled) phase
-shift in the qubit picture. These phase shifts act like those in the MZIs on an
-integrated optical circuit so can be drawn from the same distributions.
-
-Note that the mapping is not polynomial, since the number of required optical
-modes grows exponentially with the number of qubits. Consequently, the number of
-parameters required to express a unitary operating on \(n\) qubits also grows
-exponentially with the number of qubits.
 
 We have shown how to express the probability density function for Haar random
 unitary matrices in terms of physically motivated parameters. The expression is
@@ -370,10 +401,11 @@ linear optics.
     gates. There is a one-to-one mapping between these phases and those in the
     Mach Zehnder interferometers of a linear optical circuit so in order to
     choose a Haar random unitary, we can use the distributions expressed in
-    figure~\ref{fig:example}(c).}
+    figure~\ref{fig:example}(d).}
   \label{fig:qubits}
 \end{figure*}
   
+\clearpage
 \bibliography{bib/dialling}
 
 \end{document}

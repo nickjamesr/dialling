@@ -9,15 +9,16 @@ set style 5 colour red
 
 fig_w=18
 fig_m=fig_w/100.
-plot_w=45*fig_m
+plot_w=28*fig_m
 plot_h=20*fig_m
 
 
 set multiplot
   set nodisplay
   eps "example.eps" at 10*fig_m,plot_h+5*fig_m width 80*fig_m
-  eps "beamsplitter.eps" at 35*fig_m,plot_h-5*fig_m width 10*fig_m
-  eps "mzi.eps" at 70*fig_m,plot_h-5*fig_m width 25*fig_m
+  eps "beamsplitter.eps" at 15*fig_m,plot_h-8*fig_m width 8*fig_m
+  eps "dcmzi.eps" at 46*fig_m,plot_h-8*fig_m width 18*fig_m
+  eps "bsmzi.eps" at 71*fig_m,plot_h-8*fig_m width 15*fig_m
 
   # Beamsplitter reflectivities
   set size plot_w
@@ -43,7 +44,7 @@ set multiplot
     4*(1-x)**3 notitle with style 4,\
     5*(1-x)**4 notitle with style 5
 
-  # MZI phases
+  # DC-MZI phases
   set size plot_w
   set size ratio plot_h/plot_w
   set axis x visible arrow nomirror
@@ -53,7 +54,7 @@ set multiplot
   set xtics out ("\(\pi\)" pi)
   set ytics out 0,1,5
   set mytics 0.2
-  set origin 55*fig_m,0
+  set origin 37*fig_m,0
   plot
   set axis x invisible
   set axis y invisible
@@ -67,16 +68,43 @@ set multiplot
     4*cos(0.5*x)**7*sin(0.5*x) notitle with style 4,\
     5*cos(0.5*x)**9*sin(0.5*x) notitle with style 5
 
+  # BS-MZI phases
+  set size plot_w
+  set size ratio plot_h/plot_w
+  set axis x visible arrow nomirror
+  set axis y visible arrow nomirror
+  set xrange [0:1.1*pi]
+  set yrange [0:1.2]
+  set xtics out ("\(\pi\)" pi)
+  set ytics out 0,1,5
+  set mytics 0.2
+  set origin 70*fig_m,0
+  plot
+  set axis x invisible
+  set axis y invisible
+  set xrange [0:pi]
+  set yrange [0:1]
+  set size plot_w*11/12.
+  set size ratio (plot_h*5/6.)/(plot_w*11/12.)
+  plot sin(0.5*x)*cos(0.5*x) notitle with style 1,\
+    2*sin(0.5*x)**3*cos(0.5*x) notitle with style 2,\
+    3*sin(0.5*x)**5*cos(0.5*x) notitle with style 3,\
+    4*sin(0.5*x)**7*cos(0.5*x) notitle with style 4,\
+    5*sin(0.5*x)**9*cos(0.5*x) notitle with style 5
+
   # Axis labels
-  text "\(r\)" at 49*fig_m,-3*fig_m
-  text "\(\theta\)" at 99*fig_m,-3*fig_m
+  text "\(r\)" at 33*fig_m,-3*fig_m
+  text "\(\theta\)" at 65*fig_m,-3*fig_m
+  text "\(\xi\)" at 98*fig_m,-3*fig_m
   text "\(\mathcal{P}\left(r\right)\)" at 6*fig_m,plot_h-1*fig_m
-  text "\(\mathcal{P}\left(\theta\right)\)" at 56*fig_m,plot_h-1*fig_m
+  text "\(\mathcal{P}\left(\theta\right)\)" at 38*fig_m,plot_h-1*fig_m
+  text "\(\mathcal{P}\left(\xi\right)\)" at 71*fig_m,plot_h-1*fig_m
 
   # Component labels
   # In graphs
-  text "\(r\)" at 40*fig_m,plot_h+2*fig_m
-  text "\(\theta\)" at 81*fig_m,plot_h+2*fig_m
+  text "\(r\)" at 19*fig_m,plot_h-3*fig_m
+  text "\(\theta\)" at 55*fig_m,plot_h-3*fig_m
+  text "\(\xi\)" at 79*fig_m,plot_h-3*fig_m
   # In Reck scheme
   text "\(r_{6,1}\)" at 49*fig_m,49*fig_m
   text "\(r_{6,2}\)" at 57*fig_m,45*fig_m
@@ -101,7 +129,8 @@ set multiplot
   # Subfigure labels
   text "(a)" at 4*fig_m,48*fig_m
   text "(b)" at 4*fig_m,22*fig_m
-  text "(c)" at 54*fig_m,22*fig_m
+  text "(c)" at 36*fig_m,22*fig_m
+  text "(d)" at 69*fig_m,22*fig_m
 
   set display
   refresh
